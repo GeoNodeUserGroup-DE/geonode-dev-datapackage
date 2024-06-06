@@ -8,13 +8,13 @@ import os
 import sys
 
 
-# DEBUG = "False"
-
-X_FRAME_OPTIONS = "SAMEORIGIN"
-
 # sets defaults settings and from .env
 from geonode.settings import *
 from geonode.settings import TEMPLATES, INSTALLED_APPS
+
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None if DEBUG else "same-origin"
 
 
 STATIC_ROOT = "/mnt/volumes/statics/static/"
