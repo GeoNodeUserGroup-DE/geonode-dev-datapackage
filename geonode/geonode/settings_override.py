@@ -10,11 +10,16 @@ import sys
 
 # sets defaults settings and from .env
 from geonode.settings import *
-from geonode.settings import TEMPLATES, INSTALLED_APPS
-
+from geonode.settings import (
+    DEBUG,
+    TEMPLATES,
+    INSTALLED_APPS,
+)
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None if DEBUG else "same-origin"
+# required for geonode-mapstore-client development
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8081"] if DEBUG else []
 
 
 STATIC_ROOT = "/mnt/volumes/statics/static/"

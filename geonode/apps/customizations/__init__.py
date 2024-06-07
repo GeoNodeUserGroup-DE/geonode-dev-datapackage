@@ -4,7 +4,7 @@ from django.apps import AppConfig
 
 def run_setup_hooks(*args, **kwargs):
     from django.conf import settings
-    from django.conf.urls import url
+    from django.urls import re_path
     from django.views.generic import TemplateView
     from geonode.urls import urlpatterns
 
@@ -13,10 +13,10 @@ def run_setup_hooks(*args, **kwargs):
     settings.TEMPLATES[0]["DIRS"].insert(0, template_dir)
 
     urlpatterns += [
-        url(r'^legal_notice/$',
+        re_path(r'^legal_notice/$',
             TemplateView.as_view(template_name='legal-notice.html'),
             name='legal-notice'),
-        url(r'^accessibility/$',
+        re_path(r'^accessibility/$',
             TemplateView.as_view(template_name='accessibility.html'),
             name='accessibility'),
     ]
