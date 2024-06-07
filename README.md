@@ -8,9 +8,9 @@ All needed components are available as [Docker](https://www.docker.com/) images 
 The whole setup is based on the [Docker Blueprint for a GeoNode Installation](https://github.com/GeoNodeUserGroup-DE/geonode-blueprint-docker).
 The blueprint is an opnionated GeoNode setup, but helps to keep everything necessary in one place to develop the datapackage feature which adds changes on multiple repositories:
 
-- https://github.com/GeoNodeUserGroup-DE/geonode/
+- [https://github.com/GeoNodeUserGroup-DE/geonode/](https://github.com/GeoNodeUserGroup-DE/geonode/tree/datapackage_tabular-data) (branch `datapackage_tabular-data`)
+- [https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/](https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/tree/datapackage_tabular-data) (Branch `datapackage_tabular-data`)
 - https://github.com/GeoNodeUserGroup-DE/geonode-importer/
-- https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/
 - https://github.com/GeoNodeUserGroup-DE/importer-datapackage/
 
 Under `./.devcontainer` you find a configuration to run and debug the project as [`devcontainer`](https://containers.dev/).

@@ -1,0 +1,1 @@
+-e git+https://github.com/GeoNodeUserGroup-DE/importer-datapackage.git@7_support-geonode-430#egg=importer_datapackage

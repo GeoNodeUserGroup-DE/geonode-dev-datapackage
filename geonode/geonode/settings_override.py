@@ -13,6 +13,7 @@ from geonode.settings import *
 from geonode.settings import (
     DEBUG,
     TEMPLATES,
+    IMPORTER_HANDLERS,
     INSTALLED_APPS,
 )
 
@@ -108,7 +109,13 @@ LOGGING = {
     },
 }
 
+IMPORTER_HANDLERS = (
+    "importer_datapackage.handlers.datapackage.handler.DataPackageFileHandler",
+    *IMPORTER_HANDLERS,
+)
+
 
 INSTALLED_APPS += (
+    "importer_datapackage",
     "customizations",
 )
