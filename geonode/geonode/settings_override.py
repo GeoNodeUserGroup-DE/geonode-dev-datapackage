@@ -22,10 +22,6 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = None if DEBUG else "same-origin"
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8081"] if DEBUG else []
 
 
-X_FRAME_OPTIONS = "SAMEORIGIN"
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None if DEBUG else "same-origin"
-
-
 STATIC_ROOT = "/mnt/volumes/statics/static/"
 MEDIA_ROOT = "/mnt/volumes/statics/uploaded/"
 
