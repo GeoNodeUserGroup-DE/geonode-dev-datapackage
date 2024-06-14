@@ -2,6 +2,7 @@ ARG BASE_IMAGE_VERSION
 FROM geonode/geonode:${BASE_IMAGE_VERSION}
 
 # we override geonode from base image here
+# FIXME a submodule fails to build (error -> cannot replace directory .git to file)
 RUN git remote add usergroup https://github.com/GeoNodeUserGroup-DE/geonode.git \
     && git fetch usergroup \
     && git stash save \
