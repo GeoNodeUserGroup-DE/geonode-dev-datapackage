@@ -8,13 +8,19 @@ import os
 import sys
 
 
-# DEBUG = "False"
-
-X_FRAME_OPTIONS = "SAMEORIGIN"
-
 # sets defaults settings and from .env
 from geonode.settings import *
-from geonode.settings import TEMPLATES, INSTALLED_APPS
+from geonode.settings import (
+    DEBUG,
+    TEMPLATES,
+    IMPORTER_HANDLERS,
+    INSTALLED_APPS,
+)
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None if DEBUG else "same-origin"
+# required for geonode-mapstore-client development
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8081"] if DEBUG else []
 
 
 STATIC_ROOT = "/mnt/volumes/statics/static/"
@@ -103,8 +109,13 @@ LOGGING = {
     },
 }
 
+IMPORTER_HANDLERS = (
+    "importer_datapackage.handlers.datapackage.handler.DataPackageFileHandler",
+    *IMPORTER_HANDLERS,
+)
+
 
 INSTALLED_APPS += (
-    "externalapplications",
+    "importer_datapackage",
     "customizations",
 )
