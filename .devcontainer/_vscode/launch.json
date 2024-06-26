@@ -45,14 +45,21 @@
       "args": [
         "test",
         "--keepdb",
-        "settings=geonode.settings_override",
         "importer.handlers.shapefile"
       ],
       "justMyCode": false,
       "cwd": "${workspaceFolder}",
-      "env": {
-        "DJANGO_SETTINGS_MODULE": "geonode.settings_override"
-      }
+    },
+    {
+      "name": "Django Command",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/manage.py",
+      "args": [
+        "set_all_datasets_metadata",
+      ],
+      "justMyCode": false,
+      "cwd": "${workspaceFolder}",
     }
   ]
 }
