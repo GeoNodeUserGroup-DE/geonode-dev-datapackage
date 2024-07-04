@@ -3,6 +3,15 @@
 		{
 			"path": "/usr/src/geonode"
 		},
+		{
+			"path": "/usr/local/lib/python3.10/dist-packages/importer"
+		},
+		{
+			"path": "/usr/local/lib/python3.10/dist-packages/geoserver"
+		},
+		{
+			"path": "/usr/src/importer-datapackage"
+		}
 	],
 	"settings": {}
 }
