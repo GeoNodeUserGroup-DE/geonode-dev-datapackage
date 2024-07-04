@@ -116,5 +116,6 @@ IMPORTER_HANDLERS = (
 
 
 INSTALLED_APPS += (
+    "importer_datapackage",
     "customizations",
 )
