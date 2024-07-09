@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "/usr/src/importer-datapackage"
+		},
+		{
+			"path": "../../django_geonode_mapstore_client_dev"
 		}
 	],
 	"settings": {}
