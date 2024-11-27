@@ -5,12 +5,13 @@
 #
 
 import os
+import ast
 import sys
 
 
 # sets defaults settings and from .env
-from geonode.settings import *
-from geonode.settings import (
+from geonode.settings import *  # noqa
+from geonode.settings import (  # noqa
     DEBUG,
     TEMPLATES,
     IMPORTER_HANDLERS,
@@ -19,12 +20,24 @@ from geonode.settings import (
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None if DEBUG else "same-origin"
-# required for geonode-mapstore-client development
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8081"] if DEBUG else []
+
+
+# relax origins for geonode-mapstore-client development
+CSRF_TRUSTED_ORIGINS = [
+    "http://172.18.0.1",
+    "http://172.18.0.1:8001",
+    "http://localhost:8081"
+] if DEBUG else ast.literal_eval(os.getenv("CSRF_TRUSTED_ORIGINS", "[]")) # noqa
+CORS_ALLOWED_ORIGINS = [
+    "http://172.18.0.1",
+    "http://172.18.0.1:8001",
+    "http://localhost:8081"
+] if DEBUG else ast.literal_eval(os.getenv("CORS_ALLOWED_ORIGINS", "[]"))  # noqa
 
 
 STATIC_ROOT = "/mnt/volumes/statics/static/"
 MEDIA_ROOT = "/mnt/volumes/statics/uploaded/"
+ASSETS_ROOT = "/mnt/volumes/statics/assets/"
 
 
 # Defines the directory that contains the settings file as the LOCAL_ROOT
@@ -47,7 +60,7 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+            "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",  # noqa
             "style": "{",
         },
         "simple": {
@@ -55,7 +68,7 @@ LOGGING = {
             "style": "{",
         },
     },
-    "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
+    "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},  # noqa
     "handlers": {
         "console": {
             "level": "WARNING",

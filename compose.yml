@@ -1,3 +1,6 @@
+include:
+  - ./compose-volumes_${VOLUMES:-default}.yml
+
 # Common Django template for GeoNode and Celery services below
 x-common-django:
   &default-common-django
@@ -7,12 +10,13 @@ x-common-django:
     dockerfile: Dockerfile
     args:
       - BASE_IMAGE_VERSION=${GEONODE_BASE_IMAGE_VERSION}
-  restart: no
+  restart: always
   env_file:
     - .env
   volumes:
     # configuration
     - ./geonode/geonode/settings_override.py:/usr/src/geonode/geonode/settings_override.py
+    - ./geonode/uwsgi.ini:/usr/src/geonode/uwsgi.ini
     - ./geonode/fixtures:/usr/src/geonode/fixtures
     # contrib apps
     - ./geonode/apps/customizations:/usr/src/geonode/customizations
@@ -27,6 +31,8 @@ x-common-django:
       condition: service_healthy
     data-dir-conf:
       condition: service_healthy
+  networks:
+    - geonode_network
 
 services:
 
@@ -43,8 +49,6 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=geonode.settings_override
       - IS_CELERY=False
-    networks:
-      - geonode_network
     entrypoint: ["/usr/src/geonode/entrypoint.sh"]
     command: "uwsgi --ini /usr/src/geonode/uwsgi.ini"
 
@@ -57,8 +61,6 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=geonode.settings_override
       - IS_CELERY=True
-    networks:
-      - geonode_network
     entrypoint: ["/usr/src/geonode/entrypoint.sh"]
     command: "celery-cmd"
 
@@ -164,24 +166,6 @@ services:
     restart: unless-stopped
     networks:
       - geonode_network
-
-volumes:
-  statics:
-    name: ${COMPOSE_PROJECT_NAME}-statics
-  geoserver-data-dir:
-    name: ${COMPOSE_PROJECT_NAME}-gsdatadir
-  dbdata:
-    name: ${COMPOSE_PROJECT_NAME}-dbdata
-  dbbackups:
-    name: ${COMPOSE_PROJECT_NAME}-dbbackups
-  backup-restore:
-    name: ${COMPOSE_PROJECT_NAME}-backup-restore
-  data:
-    name: ${COMPOSE_PROJECT_NAME}-data
-  tmp:
-    name: ${COMPOSE_PROJECT_NAME}-tmp
-  rabbitmq:
-    name: ${COMPOSE_PROJECT_NAME}-rabbitmq
 
 networks:
   geonode_network:

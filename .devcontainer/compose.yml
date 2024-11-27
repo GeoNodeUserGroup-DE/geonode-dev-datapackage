@@ -4,7 +4,6 @@ services:
       - .devcontainer/.env.local
     restart: "no"
     volumes:
-      #- ../geonode:/usr/src/geonode
       - ./.devcontainer/_gitignore:/usr/src/geonode/.gitignore
       - ./.devcontainer/_vscode:/usr/src/geonode/.vscode
     ports:
@@ -48,3 +47,14 @@ services:
         - BASE_IMAGE_VERSION=${POSTGRES_BASE_IMAGE_VERSION}
     ports:
      - "5432:5432"
+
+  mail:
+    image: marcopas/docker-mailslurper:latest
+    volumes:
+      - ./.devcontainer/docker/mail/custom-config.json:/opt/mailslurper/config.json
+    ports:
+      - "8008:8080"
+      - "8085:8085"
+    command: "./mailslurper -loglevel debug -logformat simple"
+    networks:
+      - geonode_network
