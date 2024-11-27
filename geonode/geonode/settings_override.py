@@ -122,10 +122,10 @@ LOGGING = {
     },
 }
 
-IMPORTER_HANDLERS = (
+IMPORTER_HANDLERS = [
     "importer_datapackage.handlers.datapackage.handler.DataPackageFileHandler",
     *IMPORTER_HANDLERS,
-)
+]
 
 
 INSTALLED_APPS += (
