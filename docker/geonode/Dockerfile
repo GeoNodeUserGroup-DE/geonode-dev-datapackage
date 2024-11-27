@@ -6,7 +6,7 @@ FROM geonode/geonode:${BASE_IMAGE_VERSION}
 RUN git remote add usergroup https://github.com/GeoNodeUserGroup-DE/geonode.git \
     && git fetch usergroup \
     && git stash save \
-    && git switch datapackage_tabular-data \
+    && git switch -d datapackage_tabular-data_v0.1.0 \
     && git stash pop &2> /dev/null
 
 COPY ./requirements.txt /usr/src/more_requirements.txt
