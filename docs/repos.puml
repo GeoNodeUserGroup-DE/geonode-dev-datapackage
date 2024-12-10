@@ -1,0 +1,66 @@
+@startuml Repository Overview
+
+' left to right direction
+' top to bottom direction
+skinparam linetype polyline
+' skinparam linetype ortho
+
+    
+frame "geosolutions" {
+
+    frame "GeoNode" {
+        
+        component "geonode" as upstream_geonode #397aab {
+
+        }
+        component "geonode-mapstore-client" as upstream_ui #397aab {
+
+        }
+
+    }
+
+    frame "geosolutions-it" {
+        
+        component "MapStore2" as upstream_mapstore #009485 {
+
+        }
+        component "geonode-subsites" as app_subsites <<contrib_app>> {
+
+        }
+    }
+}
+
+frame "GeoNodeUserGroup-DE" {
+    component "contrib_externalapplications" as app_externalapplications <<contrib_app>> {
+
+    }
+
+    node "geonode-docker-blueprint" as usergroup_blueprint <<project blueprint>> #D4ED31 {
+
+    }
+    
+    node "geonode-dev-datapackage" as usergroup_datapackage_dev #D4ED31 {
+        component "contrib_datapackage" as app_datapackage <<contrib_app>> {
+
+        }
+        component "geonode" as app_datapackage_geonode <<datapackage_tabular-data>> #397aab {
+
+        }
+        component "geonode-mapstore-client" as app_datapackage_ui <<datapackage_tabular-data>> #397aab {
+
+        }
+    }
+
+}
+
+
+usergroup_blueprint -> app_externalapplications: Git Submodule
+
+' dev package
+usergroup_datapackage_dev -> usergroup_blueprint: upstream
+app_datapackage_geonode -> upstream_geonode: upstream
+app_datapackage_ui -u-> upstream_ui: upstream
+
+' GeoNode in general
+upstream_ui -> upstream_mapstore: Git Submodule
+@enduml
