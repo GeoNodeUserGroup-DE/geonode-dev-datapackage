@@ -1,11 +1,10 @@
 ARG BASE_IMAGE_VERSION
 FROM geonode/nginx:${BASE_IMAGE_VERSION}
+ARG CERT_PATH_CHAIN=./cert.pem
+ARG CERT_PATH_KEY=./key.pem
 
 ENV STATIC_ROOT=/mnt/volumes/statics/static/
 ENV MEDIA_ROOT=/mnt/volumes/statics/uploaded/
-
-COPY ./cert.pem /geonode-certificates/autoissued/fullchain.pem
-COPY ./key.pem /geonode-certificates/autoissued/privkey.pem
 
 # use $http_host variable instead of $host which does not transport the port
 COPY ./geonode.conf.envsubst /etc/nginx/sites-enabled/geonode.conf.envsubst

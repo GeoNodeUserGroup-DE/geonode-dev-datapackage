@@ -23,16 +23,29 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = None if DEBUG else "same-origin"
 
 
 # relax origins for geonode-mapstore-client development
-CSRF_TRUSTED_ORIGINS = [
-    "http://172.18.0.1",
-    "http://172.18.0.1:8001",
-    "http://localhost:8081"
-] if DEBUG else ast.literal_eval(os.getenv("CSRF_TRUSTED_ORIGINS", "[]")) # noqa
-CORS_ALLOWED_ORIGINS = [
-    "http://172.18.0.1",
-    "http://172.18.0.1:8001",
-    "http://localhost:8081"
-] if DEBUG else ast.literal_eval(os.getenv("CORS_ALLOWED_ORIGINS", "[]"))  # noqa
+CSRF_TRUSTED_ORIGINS = (
+    [
+        "http://localhost",
+    ]
+    if DEBUG
+    else ast.literal_eval(os.getenv("CSRF_TRUSTED_ORIGINS", "[]"))
+)  # noqa
+CORS_ALLOWED_ORIGINS = (
+    [
+        "http://localhost",
+    ]
+    if DEBUG
+    else ast.literal_eval(os.getenv("CORS_ALLOWED_ORIGINS", "[]"))
+)  # noqa
+CORS_ALLOWED_ORIGIN_REGEXES = (
+    [
+        # match localhost with any port
+        r"^http:\/\/localhost:*([0-9]+)?$",
+        r"^https:\/\/localhost:*([0-9]+)?$",
+    ]
+    if DEBUG
+    else ast.literal_eval(os.getenv("CORS_ALLOWED_ORIGIN_REGEXES", "[]"))
+)  # noqa
 
 
 STATIC_ROOT = "/mnt/volumes/statics/static/"
@@ -131,4 +144,12 @@ IMPORTER_HANDLERS = [
 INSTALLED_APPS += (
     "importer_datapackage",
     "customizations",
+    "subsites",
 )
+
+
+# SUBSITE SPECIFIC CONFIGURATION
+ENABLE_SUBSITE_CUSTOM_THEMES = True
+ENABLE_CATALOG_HOME_REDIRECTS_TO = False
+SUBSITE_READ_ONLY = False # return download_resourcebase and view resourcebase as permissions
+SUBSITE_HIDE_EXCLUSIVE_FROM_SPECIFIC_API = True # If TRUE will hide the `subsite_exclusive` resources also from the detailed endpoint `/documents`, `/maps`, `/datasets`, '/geoapps`
