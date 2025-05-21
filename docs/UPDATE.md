@@ -93,6 +93,6 @@ After that, update `usergroup/geonode-dev-datapackage` be merging from `usergrou
 
 ## Miscellaneous
 
-Here is a somewhat reduced overview of the repository relationships of `thuenen_atlas`:
+Here is a somewhat reduced overview of the repository relationships:
 
 ![Repository Overview](./Repository%20Overview.png)
