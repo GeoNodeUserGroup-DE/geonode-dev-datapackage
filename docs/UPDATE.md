@@ -83,7 +83,7 @@ Merge from `geonode/geonode` on branch `upstream/4.4.x`.
 
 ### Update Development Setup
 
-After updating all subcomponents, make sure to update all submodules:
+After updating all subcomponents, make sure to update all available submodules, like
 
 - `geonode-mapstore-client`
 - `externalapplications`
