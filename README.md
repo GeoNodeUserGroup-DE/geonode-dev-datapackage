@@ -8,7 +8,7 @@ All needed components are available as [Docker](https://www.docker.com/) images 
 The whole setup is based on the [Docker Blueprint for a GeoNode Installation](https://github.com/GeoNodeUserGroup-DE/geonode-blueprint-docker).
 The blueprint is an opnionated GeoNode setup, but helps to keep everything necessary in one place to develop the datapackage feature which adds changes on multiple repositories:
 
-GeoNode Relase 4.4.3 references:
+GeoNode Release 4.4.3 references:
 - [GeoNodeUserGroup-DE/geonode/](https://github.com/GeoNodeUserGroup-DE/geonode/tree/datapackage_tabular-data) (Release `geonode-v4.4.3+tabular001`)
 - [GeoNodeUserGroup-DE/geonode-mapstore-client/](https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/tree/datapackage_tabular-data) (Release `geonode-mapstore-client-v4.4.3+tabular003`)
 - [GeoNodeUserGroup-DE/contrib_datapackage/] https://github.com/GeoNodeUserGroup-DE/importer-datapackage/ (Release `geonode-v4.4.3+datapackage002`)
