@@ -10,8 +10,8 @@ The blueprint is an opnionated GeoNode setup, but helps to keep everything neces
 
 GeoNode Relase 4.4.3 references:
 - [GeoNodeUserGroup-DE/geonode/](https://github.com/GeoNodeUserGroup-DE/geonode/tree/datapackage_tabular-data) (Release `geonode-v4.4.3+tabular001`)
-- [GeoNodeUserGroup-DE/geonode-mapstore-client/](https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/tree/datapackage_tabular-data) (Release `geonode-mapstore-client-v4.4.3+tabular001`)
-- [GeoNodeUserGroup-DE/contrib_datapackage/] https://github.com/GeoNodeUserGroup-DE/importer-datapackage/ (Release `geonode-v4.4.3+datapackage001`)
+- [GeoNodeUserGroup-DE/geonode-mapstore-client/](https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/tree/datapackage_tabular-data) (Release `geonode-mapstore-client-v4.4.3+tabular003`)
+- [GeoNodeUserGroup-DE/contrib_datapackage/] https://github.com/GeoNodeUserGroup-DE/importer-datapackage/ (Release `geonode-v4.4.3+datapackage002`)
 
 Under `./.devcontainer` you find a configuration to run and debug the project as [`devcontainer`](https://containers.dev/).
 The setup integrates nicely with IDEs [like vs-code](https://code.visualstudio.com/docs/devcontainers/containers).
