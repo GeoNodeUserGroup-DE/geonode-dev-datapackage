@@ -1,4 +1,4 @@
 [submodule "docker/geonode/geonode-mapstore-client"]
 	path = docker/geonode/geonode-mapstore-client
 	url = https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/
-	branch = geonode-mapstore-client-v4.4.3+tabular003
+	branch = datapackage_tabular-data
