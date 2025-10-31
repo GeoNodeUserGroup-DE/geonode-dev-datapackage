@@ -8,10 +8,11 @@ RUN git fetch -q usergroup
 RUN git switch datapackage_tabular-data
 
 COPY ./requirements.txt /usr/src/more_requirements.txt
-RUN yes w | pip install --src /usr/src -r /usr/src/more_requirements.txt
+RUN yes w | pip install --upgrade -r /usr/src/geonode/requirements.txt
+RUN yes w | pip install --upgrade --src /usr/src -r /usr/src/more_requirements.txt
 
 COPY ./geonode-mapstore-client /usr/src/django_geonode_mapstore_client_dev
-RUN yes w | pip install -e /usr/src/django_geonode_mapstore_client_dev
+RUN yes w | pip install --upgrade -e /usr/src/django_geonode_mapstore_client_dev
 
 RUN true \
     # django logs are written to stdout by default (see uwsgi.ini)
