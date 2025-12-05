@@ -6,12 +6,13 @@ All needed components are available as [Docker](https://www.docker.com/) images 
 ## Background
 
 The whole setup is based on the [Docker Blueprint for a GeoNode Installation](https://github.com/GeoNodeUserGroup-DE/geonode-blueprint-docker).
-The blueprint is an opnionated GeoNode setup, but helps to keep everything necessary in one place to develop the datapackage feature which adds changes on multiple repositories:
+The blueprint is an opinionated GeoNode setup, but helps to keep everything necessary in one place to develop the datapackage feature which adds changes on multiple repositories:
 
 GeoNode Release 4.4.3 references:
+
 - [GeoNodeUserGroup-DE/geonode/](https://github.com/GeoNodeUserGroup-DE/geonode/tree/datapackage_tabular-data) (Release `geonode-v4.4.3+tabular001`)
 - [GeoNodeUserGroup-DE/geonode-mapstore-client/](https://github.com/GeoNodeUserGroup-DE/geonode-mapstore-client/tree/datapackage_tabular-data) (Release `geonode-mapstore-client-v4.4.3+tabular003`)
-- [GeoNodeUserGroup-DE/contrib_datapackage/] https://github.com/GeoNodeUserGroup-DE/importer-datapackage/ (Release `geonode-v4.4.3+datapackage002`)
+- [GeoNodeUserGroup-DE/contrib_datapackage/](https://github.com/GeoNodeUserGroup-DE/importer-datapackage/) (Release `geonode-v4.4.3+datapackage002`)
 
 Under `./.devcontainer` you find a configuration to run and debug the project as [`devcontainer`](https://containers.dev/).
 The setup integrates nicely with IDEs [like vs-code](https://code.visualstudio.com/docs/devcontainers/containers).
@@ -24,7 +25,7 @@ Make sure you have installed `git`, `Docker` and `docker compose`.
 
 Clone the [repository containing a GeoNode Docker setup]( https://github.com/GeoNodeUserGroup-DE/geonode-dev-datapackage) and change directory your local working copy:
 
-```
+```sh
 git clone --recurse-submodules https://github.com/GeoNodeUserGroup-DE/geonode-dev-datapackage geonode-dev-datapackage
 cd geonode-dev-datapackage
 ```
@@ -33,22 +34,19 @@ cd geonode-dev-datapackage
 
 > :bulb: **Note**
 >
-> Settings (e.g. geodatabase parameters) are mainly configured in the `.env` file. 
+> Settings (e.g. geodatabase parameters) are mainly configured in the `.env` file.
 > To review in-built default settings of an image, run the `env` command on an image.
 > For example `docker run geonode/geoserver env | sort`.
 >
 > For a complete set of available options take the [GeoNode Settings](https://docs.geonode.org/en/master/basic/settings/index.html#settings) documentation as a reference.
 
-The containers get configured during creation via environment variables. 
+The containers get configured during creation via environment variables.
 The `geonode/settings.py` settings module takes further configuration of the GeoNode containers (`django` and `celery`) and aligns some names with those documented.
-
 
 Copy the `sample.env` to `.env` and make your changes (`.env` is not versioned).
 For a quick start taking default values you can run `docker compose up -d --env-file=sample.env`.
 
-
 Have a look at the [Ways to set environment variables in Compose](https://docs.docker.com/compose/environment-variables/set-environment-variables/) documentation.
-
 
 ### TLS Config
 
@@ -63,7 +61,6 @@ Uncomment the corresponding lines:
     #- <path-to-cert>.pem:/geonode-certificates/autoissued/fullchain.pem
     #- <path-to-key>.pem:/geonode-certificates/autoissued/privkey.pem
  ```
-
 
 ### Volume Configuration
 
@@ -93,14 +90,12 @@ Define `VOLUME=myconfig` as an environment variable and verify your setup via `d
 
 If everything looks good start up the services.
 
-
-
 ## Start and Run
 
 ### Docker-Compose Basics
 
 Run `docker compose up -d` to start all geonode components.
-Review all started components by executing `docker compose ps`. 
+Review all started components by executing `docker compose ps`.
 You can follow logs via `docker compose logs -f` and optionally pass a service to only follow a service's log.
 
 Stop all components via `docker compose down`, and pass a `-v` flag to clean up all volumes (CAUTION: removes all persisted data).
